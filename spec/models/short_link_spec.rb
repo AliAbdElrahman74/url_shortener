@@ -27,7 +27,7 @@ RSpec.describe ShortLink, type: :model do
 
       # We expect it to be a string representation of the ID
       # Note: exact value depends on your encoder implementation
-      expect(link.short_code).not_to eq(link.id.to_s) 
+      expect(link.short_code).not_to eq(link.id.to_s)
     end
 
     it 'ensures codes are unique for different records' do

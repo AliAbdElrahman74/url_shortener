@@ -28,13 +28,15 @@ RSpec.describe "ShortLinks API", type: :request do
     context "with invalid parameters" do
       it "returns error if URL is missing" do
         post "/encode", params: { url: "" }
-        expect(response).to have_http_status(:unprocessable_entity)
+        # Change :unprocessable_entity to 422
+        expect(response).to have_http_status(422) 
         expect(json_response["error"]).to be_present
       end
 
       it "returns error if URL is malformed" do
         post "/encode", params: { url: "not-a-http-url" }
-        expect(response).to have_http_status(:unprocessable_entity)
+        # Change :unprocessable_entity to 422
+        expect(response).to have_http_status(422)
       end
     end
   end

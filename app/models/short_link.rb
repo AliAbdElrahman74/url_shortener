@@ -18,6 +18,6 @@ class ShortLink < ApplicationRecord
   def generate_short_code
     # We use the ID to generate the code. 
     # Optional: Add an offset (e.g., +100000) to avoid 1-character codes initially.
-    self.update_column(:short_code, IdEncoder.encode(self.id))
+    self.update_column(:short_code, IdEncoder.encode(self.id + 100000))
   end
 end
