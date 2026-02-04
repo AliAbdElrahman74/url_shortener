@@ -8,6 +8,78 @@ Prerequisites
 - Rails 7.x
 - SQLite3 (Development/Test) / PostgreSQL (Production recommended)
 
+## Live Demo 
+You can test the live deployment at: `https://shortlink-api-pnrk.onrender.com`
+
+### 1. Encode a URL
+Converts a long URL into a shortened link.
+
+* **Endpoint:** `POST /encode`
+* **Content-Type:** `application/json`
+
+**Request:**
+```
+curl -X POST [https://shortlink-api-pnrk.onrender.com/encode](https://shortlink-api-pnrk.onrender.com/encode) \
+     -H "Content-Type: application/json" \
+     -d '{"url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"}'
+```
+
+**Response (200 OK):**
+```
+JSON
+
+{
+  "short_url": "[https://shortlink-api-pnrk.onrender.com/1b](https://shortlink-api-pnrk.onrender.com/1b)",
+  "original_url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"
+}
+```
+
+### 2. Decode a URL
+Retrieves the original URL from a shortened link.
+
+* **Endpoint:** POST /decode
+
+* **Content-Type:** `application/json`
+
+**Request:**
+
+### Replace '1b' with the actual code you received from the encode step
+```
+curl -X POST [https://shortlink-api-pnrk.onrender.com/decode](https://shortlink-api-pnrk.onrender.com/decode) \
+     -H "Content-Type: application/json" \
+     -d '{"url": "[https://shortlink-api-pnrk.onrender.com/1b](https://shortlink-api-pnrk.onrender.com/1b)"}'
+```
+
+**Response (200 OK):**
+
+```
+JSON
+
+{
+  "original_url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"
+}
+```
+
+### 3. Error Handling
+Test invalid inputs to verify validation logic.
+
+**Request:**
+
+```
+curl -X POST [https://shortlink-api-pnrk.onrender.com/encode](https://shortlink-api-pnrk.onrender.com/encode) \
+     -H "Content-Type: application/json" \
+     -d '{"url": "not-a-valid-url"}'
+```
+
+**Response (422 Unprocessable Entity):**
+```
+JSON
+
+{
+  "error": "Original url is invalid"
+}
+```
+
 ## Installation
 Clone the repository:
 
