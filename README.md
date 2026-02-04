@@ -11,6 +11,8 @@ Prerequisites
 ## Live Demo 
 You can test the live deployment at: `https://shortlink-api-pnrk.onrender.com`
 
+**Note: the demo is on a free tier, so it might take some time to spin up whenever you try it** 
+
 ### 1. Encode a URL
 Converts a long URL into a shortened link.
 
@@ -19,9 +21,9 @@ Converts a long URL into a shortened link.
 
 **Request:**
 ```
-curl -X POST [https://shortlink-api-pnrk.onrender.com/encode](https://shortlink-api-pnrk.onrender.com/encode) \
+curl -X POST https://shortlink-api-pnrk.onrender.com/encode \
      -H "Content-Type: application/json" \
-     -d '{"url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"}'
+     -d '{"url": "https://codesubmit.io/library/react"}'
 ```
 
 **Response (200 OK):**
@@ -29,8 +31,8 @@ curl -X POST [https://shortlink-api-pnrk.onrender.com/encode](https://shortlink-
 JSON
 
 {
-  "short_url": "[https://shortlink-api-pnrk.onrender.com/1b](https://shortlink-api-pnrk.onrender.com/1b)",
-  "original_url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"
+  "short_url": "https://shortlink-api-pnrk.onrender.com/1b",
+  "original_url": "https://codesubmit.io/library/react"
 }
 ```
 
@@ -45,9 +47,9 @@ Retrieves the original URL from a shortened link.
 
 ### Replace '1b' with the actual code you received from the encode step
 ```
-curl -X POST [https://shortlink-api-pnrk.onrender.com/decode](https://shortlink-api-pnrk.onrender.com/decode) \
+curl -X POST https://shortlink-api-pnrk.onrender.com/decode \
      -H "Content-Type: application/json" \
-     -d '{"url": "[https://shortlink-api-pnrk.onrender.com/1b](https://shortlink-api-pnrk.onrender.com/1b)"}'
+     -d '{"url": "https://shortlink-api-pnrk.onrender.com/1b"}'
 ```
 
 **Response (200 OK):**
@@ -56,7 +58,7 @@ curl -X POST [https://shortlink-api-pnrk.onrender.com/decode](https://shortlink-
 JSON
 
 {
-  "original_url": "[https://codesubmit.io/library/react](https://codesubmit.io/library/react)"
+  "original_url": "https://codesubmit.io/library/react"
 }
 ```
 
@@ -66,7 +68,7 @@ Test invalid inputs to verify validation logic.
 **Request:**
 
 ```
-curl -X POST [https://shortlink-api-pnrk.onrender.com/encode](https://shortlink-api-pnrk.onrender.com/encode) \
+curl -X POST https://shortlink-api-pnrk.onrender.com/encode \
      -H "Content-Type: application/json" \
      -d '{"url": "not-a-valid-url"}'
 ```
