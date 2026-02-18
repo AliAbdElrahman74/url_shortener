@@ -7,7 +7,6 @@ class ShortLinksController < ApplicationController
     link = ShortLink.find_or_create_by(original_url: original)
 
     if link.persisted?
-      # FIX: Use the model method here for consistent formatting
       render json: link.to_json_response(request.base_url), status: :ok
     else
       render_error(link.errors.full_messages.join(", "))
@@ -23,8 +22,6 @@ class ShortLinksController < ApplicationController
     link = ShortLink.find_by(short_code: code)
 
     if link
-      # FIX: Use the model method here as well, or just return original_url as requested
-      # The prompt asked for specific JSON format, so we stick to that.
       render json: { original_url: link.original_url }, status: :ok
     else
       render_error("URL not found", :not_found)
